@@ -9,9 +9,11 @@ LOCAL_MODULE := freetype2-static
 LOCAL_CFLAGS := -DANDROID_NDK \
 		-DFT2_BUILD_LIBRARY=1
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/include_all \
-		$(FREETYPE_SRC_PATH)include \
-		$(FREETYPE_SRC_PATH)src
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/include_all \
+		$(LOCAL_PATH)/../../include \
+		$(LOCAL_PATH)/../../src
+
+LOCAL_EXPORT_C_INCLUDES += $(LOCAL_PATH)/../../include 
 
 LOCAL_SRC_FILES := \
 	$(FREETYPE_SRC_PATH)src/autofit/autofit.c \
@@ -36,7 +38,7 @@ LOCAL_SRC_FILES := \
 	$(FREETYPE_SRC_PATH)src/smooth/smooth.c \
 	$(FREETYPE_SRC_PATH)src/truetype/truetype.c
 
-LOCAL_LDLIBS := -ldl -llog
+#LOCAL_LDLIBS := -ldl -llog
 
 include $(BUILD_STATIC_LIBRARY)
 
